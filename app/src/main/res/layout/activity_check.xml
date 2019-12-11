@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical"
+    android:background="@drawable/index">
+
+
+    <TextView
+        android:id="@+id/Check_TulisanBesar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Balance"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="#f4f4f4"/>
+
+    <ImageView
+        android:id="@+id/Check_image"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="50dp"
+
+        android:src="@drawable/logo_key"/>
+
+    <Button
+        android:id="@+id/Check_Connect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:padding="8dp"
+        android:text="Connect"
+        android:onClick="CheckButton"/>
+    <TextView
+        android:id="@+id/Check_key_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="8dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Your Balance will be Displayed Here"
+        android:gravity="center_horizontal"
+        android:background="#FFFFFF"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/Check_Response"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        />
+
+
+    <Button
+        android:id="@+id/Check_Submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:padding="8dp"
+        android:text="Check Balance"
+        android:onClick="CheckButton"/>
+
+    <ScrollView
+        android:id="@+id/SCROLLER_ID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        android:visibility="gone">>
+    </ScrollView>
+
+    <CheckBox
+        android:id="@+id/Check_autoscrollz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Autoscroll"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="45dp"
+        android:visibility="gone"/>
+
+    <Spinner
+        android:id="@+id/Check_spinnerz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/baud_arrays"
+        android:prompt="@string/baud_prompt"
+        android:layout_alignBottom="@+id/autoscrollz"
+        android:layout_toEndOf="@+id/autoscrollz"
+        android:visibility="gone"/>
+
+</LinearLayout>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:orientation="vertical"
+        android:background="@drawable/index">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:text="REGISTER"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:textColor="#f4f4f4"/>
+
+        <ImageView
+            android:id="@+id/Register_Image"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/logo_key"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="20dp"/>
+
+        <Button
+            android:id="@+id/Register_Open"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_above="@id/btWrite"
+            android:text="Connect" />
+
+        <EditText
+            android:id="@+id/registerUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp"
+            android:background="#ffffff"
+            android:hint="Username"
+            android:padding="5dp"
+            android:inputType="text"
+            android:maxLength="13"/>
+
+        <EditText
+            android:id="@+id/registerPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp"
+            android:background="#ffffff"
+            android:hint="Password"
+            android:padding="5dp"
+            android:inputType="textPassword"  />
+
+        <EditText
+            android:id="@+id/registerFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp"
+            android:background="#ffffff"
+            android:hint="First Name"
+            android:padding="5dp"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/registerLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp"
+            android:background="#ffffff"
+            android:hint="Last Name"
+            android:padding="5dp"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/registerEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp"
+            android:background="#ffffff"
+            android:hint="Email"
+            android:padding="5dp"
+            android:inputType="textEmailAddress" />
+
+        <Button
+            android:id="@+id/registerBtnReg"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_above="@id/btWrite"
+            android:text="Register"
+            android:onClick="userReg"/>
+        <TextView
+            android:id="@+id/registerResponse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"/>
+
+        <TextView
+            android:id="@+id/registerText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"/>
+        <TextView
+            android:id="@+id/registerText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"/>
+        <TextView
+            android:id="@+id/registerText3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"/>
+        <TextView
+            android:id="@+id/registerText4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"/>
+        <TextView
+            android:id="@+id/registerText5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"/>
+
+
+        <ScrollView
+            android:id="@+id/SCROLLER_ID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:scrollbars="vertical"
+            android:visibility="gone">>
+        </ScrollView>
+
+        <CheckBox
+            android:id="@+id/Register_autoscrollz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Autoscroll"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="45dp"
+            android:visibility="gone"/>
+
+        <Spinner
+            android:id="@+id/Register_spinnerz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/baud_arrays"
+            android:prompt="@string/baud_prompt"
+            android:layout_alignBottom="@+id/autoscrollz"
+            android:layout_toEndOf="@+id/autoscrollz"
+            android:visibility="gone"/>
+
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

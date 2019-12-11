@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical"
+    android:background="@drawable/index">
+
+    <TextView
+        android:id="@+id/text_view_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:gravity="center_horizontal"
+        android:text="SENDING"
+        android:textStyle="bold"
+        android:textSize="50dp"
+        android:textColor="#f4f4f4"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/SendTesto"/>
+
+    <Button
+        android:id="@+id/Send_Connect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="6dp"
+        android:text="Connect"
+        />
+
+    <ImageView
+        android:id="@+id/Send_image"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/logo_key"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="50dp"/>
+
+    <EditText
+        android:id="@+id/Send_et_key"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#ffffff"
+        android:hint="Input Key Receiver"
+        android:padding="5dp"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/Send_et_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+        android:hint="Amount"
+        android:padding="6dp"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/Send_btsubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="6dp"
+        android:text="Send"
+        android:onClick="Send_buttonsubmit"/>
+
+    <ScrollView
+        android:id="@+id/SCROLLER_ID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        android:visibility="gone">>
+    </ScrollView>
+
+    <CheckBox
+        android:id="@+id/Send_autoscrollz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Autoscroll"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="45dp"
+        android:visibility="gone"/>
+
+    <Spinner
+        android:id="@+id/Send_spinnerz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/baud_arrays"
+        android:prompt="@string/baud_prompt"
+        android:layout_alignBottom="@+id/autoscrollz"
+        android:layout_toEndOf="@+id/autoscrollz"
+        android:visibility="gone"/>
+
+</LinearLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical"
+    android:background="@drawable/index">
+
+
+    <TextView
+        android:id="@+id/text_view_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Main Menu"
+        android:textColor="#f4f4f4"
+        android:textSize="60dp"
+        android:layout_marginTop="20dp"
+         />
+    <ImageView
+        android:id="@+id/Menu_image"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="50dp"
+        android:src="@drawable/icon"/>
+
+    <Button
+        android:id="@+id/buttonsend"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Send"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custom_button"/>
+
+    <Button
+        android:id="@+id/buttonreceive"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:text="Receive"
+        android:background="@drawable/custom_button"/>
+
+    <Button
+        android:id="@+id/buttoncheck"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custom_button"
+        android:text="Check Balance" />
+
+    <Button
+        android:id="@+id/buttonkey"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custom_button"
+        android:text="View Key"
+        android:visibility="gone"/>
+    <Button
+        android:id="@+id/buttonInsertKey"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:text="Shindeiru Toki"
+        android:background="@drawable/custom_button"
+        />
+    <Button
+        android:id="@+id/buttonInsertPin"
+        android:layout_width="300dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/custom_button"
+        android:text="Change PIN" />
+
+</LinearLayout>

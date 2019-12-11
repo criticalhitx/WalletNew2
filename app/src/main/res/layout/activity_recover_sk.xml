@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical"
+    android:background="@drawable/index">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:gravity="center_horizontal"
+        android:text="RECOVER w/ Secret Key"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:textColor="#f4f4f4"/>
+
+    <ImageView
+        android:id="@+id/RecoverSK_image"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/logo_key"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/RecoverSK_testResponse"/>
+
+    <Button
+        android:id="@+id/RecoverSK_connect"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:text="Connect"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/RecoverSK_nilaisk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:background="#ffffff"
+        android:hint="Insert Secret Key"
+        android:padding="5dp"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/RecoverSK_newUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:background="#ffffff"
+        android:hint="New Username"
+        android:padding="5dp"
+        android:inputType="text"
+        android:maxLength="13"/>
+
+    <EditText
+        android:id="@+id/RecoverSK_newPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:background="#ffffff"
+        android:hint="New Password"
+        android:padding="5dp"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:id="@+id/RecoverSK_btCheckValidity"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:text="Check Validity"
+        android:onClick="RecoverSK_btCheckValidity"/>
+
+    <Button
+        android:id="@+id/RecoverSK_btPut"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:text="Put into Wallet!!"
+        android:visibility="gone"/>
+
+
+
+    <ScrollView
+        android:id="@+id/SCROLLER_ID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        android:visibility="gone">>
+    </ScrollView>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Autoscroll"
+        android:id="@+id/RecoverSK_autoscrolls"
+        android:layout_marginBottom="45dp"
+        android:visibility="gone"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/RecoverSK_spinners"
+        android:entries="@array/baud_arrays"
+        android:prompt="@string/baud_prompt"
+        android:visibility="gone"/>
+
+</LinearLayout>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical"
+    android:background="@drawable/index">
+
+    <TextView
+        android:id="@+id/InsertPIN_judul"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:gravity="center_horizontal"
+        android:text="CHANGE PIN"
+        android:textStyle="bold"
+        android:textSize="50dp"
+        android:textColor="#f4f4f4"/>
+
+    <ImageView
+        android:id="@+id/imagebackPin"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/logo_key"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="50dp"/>
+
+    <EditText
+        android:id="@+id/nilaiPin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#ffffff"
+        android:hint="Enter Your OLD PIN"
+        android:padding="5dp"
+        android:inputType="text"
+        android:visibility="invisible"
+        android:maxLength="8" />
+
+    <EditText
+        android:id="@+id/InsertPIN_pinbaru"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#ffffff"
+        android:hint="Enter your new PIN"
+        android:padding="5dp"
+        android:inputType="text"
+        android:visibility="gone"
+        android:maxLength="8"/>
+
+    <TextView
+        android:id="@+id/insertpin_response"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/insertpin_res2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btOpenz"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@id/btWrite"
+        android:onClick="onClickOpen"
+        android:text="Connect" />
+
+    <Button
+        android:id="@+id/InsertPIN_btOldPIN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="6dp"
+        android:text="Send Your Old PIN"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/InsertPIN_btNewPIN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="6dp"
+        android:text="Send Your New PIN"
+        android:visibility="gone"/>
+
+
+    <ScrollView
+        android:id="@+id/SCROLLER_ID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        android:visibility="gone">>
+    </ScrollView>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Autoscroll"
+        android:id="@+id/autoscrollz"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="45dp"
+        android:visibility="gone"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerz"
+        android:entries="@array/baud_arrays"
+        android:prompt="@string/baud_prompt"
+        android:layout_alignBottom="@+id/autoscrollz"
+        android:layout_toEndOf="@+id/autoscrollz"
+        android:visibility="gone"/>
+
+</LinearLayout>

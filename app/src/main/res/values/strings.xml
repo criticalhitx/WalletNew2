@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">S-Key</string>
+    <string name="generate">2</string>
+    <string name="view">3</string>
+    <string name="insert_key">4</string>
+    <string name="insert_pin">5</string>
+    <string name="main_menu">0</string>
+    <string name="backtomain">000</string>
+    <string name="action_settings">Settings</string>
+    <string name="baud_prompt">Choose Baudrate</string>
+    <string-array name="baud_arrays">
+        <item>300 baud</item>
+        <item>1200 baud</item>
+        <item>2400 baud</item>
+        <item>4800 baud</item>
+        <item>9600 baud</item>
+        <item>19200 baud</item>
+        <item>38400 baud</item>
+        <item>576600 baud</item>
+        <item>744880 baud</item>
+        <item>115200 baud</item>
+        <item>230400 baud</item>
+        <item>250000 baud</item>
+    </string-array>
+    <string name="title_activity_get_times">GetTimes</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+</resources>
