@@ -1,90 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
     android:orientation="vertical"
     android:background="@drawable/index">
 
     <TextView
+        android:id="@+id/HistoryOut_response"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="RECEIVE"
-        android:textSize="55sp"
-        android:gravity="center"
+        android:textColor="#F36893"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="50dp"
+        android:gravity="center_horizontal"
+        android:text="History Out"
         android:textStyle="bold"
-        android:textColor="#ffffff"/>
+        android:textSize="50dp"
+        android:textColor="#f4f4f4"/>
 
     <ImageView
-        android:id="@+id/Receive_imagebackPin"
+        android:id="@+id/HistoryOut_imageback"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:src="@drawable/logo_key"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"
-        android:src="@drawable/logo_key"/>
+        android:layout_marginBottom="50dp"/>
 
-    <TextView
-        android:id="@+id/tvRead"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Your Stealth Address Will be Displayed Here"
-        android:textColor="#ababab"
-        android:textSize="20sp"
-        android:layout_margin="20dp"
-        android:gravity="center_horizontal"
-        android:visibility="gone"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/Receive_tvUsername"
-        android:visibility="gone"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/Receive_tvStealth"
-        android:visibility="gone"/>
+
+
+
 
     <Button
-        android:id="@+id/btOpen"
+        android:id="@+id/HistoryOut_btOpens"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:layout_above="@id/btWrite"
         android:onClick="onClickOpen"
         android:text="Connect" />
 
-    <TextView
-        android:id="@+id/tvExitNotif"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#FFFFFF"
-        android:visibility="gone"
-        android:padding="25dp"
-        android:gravity="center_horizontal"/>
-
-
-
-
     <Button
-        android:id="@+id/btWrite"
+        android:id="@+id/HistoryOut_btRetrieve"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
         android:layout_gravity="center_horizontal"
-        android:onClick="onClickWrite"
-        android:text="Generate" />
-
-
-
-
-
-
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@id/btWrite"
+        android:onClick="onClickRetrieve"
+        android:text="Retrieve History"
+        android:visibility="gone"/>
 
     <ScrollView
         android:id="@+id/SCROLLER_ID"
@@ -99,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Autoscroll"
-        android:id="@+id/autoscroll"
+        android:id="@+id/HistoryOut_autoscrolls"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="45dp"
         android:visibility="gone"/>
@@ -107,7 +82,7 @@
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner"
+        android:id="@+id/HistoryOut_spinners"
         android:entries="@array/baud_arrays"
         android:prompt="@string/baud_prompt"
         android:layout_alignBottom="@+id/autoscroll"

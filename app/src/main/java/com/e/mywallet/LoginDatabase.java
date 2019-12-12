@@ -138,7 +138,7 @@ public class LoginDatabase extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                String kirim = "moemoe";
+                /*String kirim = "moemoe";
                 if(kirim.length()>0) {
                     byte[] buf = kirim.getBytes();
                     mPhysicaloid.write(buf, buf.length);}
@@ -152,8 +152,8 @@ public class LoginDatabase extends AppCompatActivity {
                         mPhysicaloid.close();
                         onBackPressed();
                     }
-                }, 1500);
-
+                }, 1500);*/
+                startActivity(new Intent(LoginDatabase.this, Menu.class));
             }
         });
         // --------------------------------------------------- //

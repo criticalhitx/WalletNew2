@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 
 public class Menu extends AppCompatActivity {
-    Button btnCek,btnSend, btnReceive, btnCheck,btnKey, btnInsertKey,btnInsertPin;
+    Button btnCek,btnSend, btnReceive, btnCheck,btnKey, btnInsertKey,btnInsertPin,btnHistoryIn, btnHistoryOut;
     TextView tampil;
     ImageView imagebackpin;
 
@@ -26,6 +26,8 @@ public class Menu extends AppCompatActivity {
         btnReceive = (Button)findViewById(R.id.buttonreceive);
         btnCheck = (Button)findViewById(R.id.buttoncheck);
         btnKey = (Button) findViewById(R.id.buttonkey);
+        btnHistoryIn =(Button)findViewById(R.id.Menu_btHistoryIn);
+        btnHistoryOut =(Button)findViewById(R.id.Menu_btHistoryOut);
         tampil = (TextView) findViewById(R.id.text_view_id);
         btnInsertKey = (Button) findViewById(R.id.buttonInsertKey);
         btnInsertPin = (Button) findViewById(R.id.buttonInsertPin);
@@ -91,6 +93,24 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v)
             {
                 startActivity(new Intent(Menu.this, InsertPIN.class));
+            }
+        });
+
+        btnHistoryIn.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(Menu.this, HistoryIn.class));
+            }
+        });
+
+        btnHistoryOut.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(Menu.this, HistoryOut.class));
             }
         });
 

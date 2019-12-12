@@ -81,4 +81,22 @@
         android:background="@drawable/custom_button"
         android:text="Change PIN" />
 
+    <Button
+        android:id="@+id/Menu_btHistoryIn"
+        android:layout_width="300dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/custom_button"
+        android:text="History In" />
+
+    <Button
+        android:id="@+id/Menu_btHistoryOut"
+        android:layout_width="300dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/custom_button"
+        android:text="History Out" />
+
 </LinearLayout>
