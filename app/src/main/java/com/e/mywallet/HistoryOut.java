@@ -17,9 +17,14 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -32,6 +37,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+
+import static android.view.View.GONE;
 
 public class HistoryOut extends AppCompatActivity implements ExampleDialog.ExampleDialogListener {
     Button btOpens ,btRetrieve;
@@ -42,6 +50,9 @@ public class HistoryOut extends AppCompatActivity implements ExampleDialog.Examp
     boolean canexit=false;
     Physicaloid mPhysicaloid; // initialising library
     String JSON_STRING;
+    String json_string;
+    JSONObject jsonObject;
+    JSONArray jsonArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +129,7 @@ public class HistoryOut extends AppCompatActivity implements ExampleDialog.Examp
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            btOpens.setVisibility(View.GONE);
+                            btOpens.setVisibility(GONE);
                             btRetrieve.setVisibility(View.VISIBLE);
                         }
                     }, 2000);
@@ -191,14 +202,14 @@ public class HistoryOut extends AppCompatActivity implements ExampleDialog.Examp
         String user_name = HistoryOut_response.getText().toString(); // !!!!Query LAH DARI ARDUINO
         String method = "historyout";
         new HistoryOut.MyTask(this).execute(method,user_name); //Jalankan AsyncTaskPertama
+        btRetrieve.setVisibility(GONE);
     }
 
-    class MyTask extends AsyncTask<String,Void,String>
-    {
+    class MyTask extends AsyncTask<String,Void,String> {
         Context ctx;
-        MyTask(Context ctx)
-        {
-            this.ctx=ctx;
+
+        MyTask(Context ctx) {
+            this.ctx = ctx;
         }
 
         @Override
@@ -208,21 +219,20 @@ public class HistoryOut extends AppCompatActivity implements ExampleDialog.Examp
 
         @Override
         protected String doInBackground(String... params) {
-            String balance_url ="http://3.135.54.193/TA/historyout.php";
+            String balance_url = "http://3.135.54.193/TA/historyout.php";
             String method = params[0];
-            if(method.equals("historyout"))
-            {
-                String user_name= params[1];
+            if (method.equals("historyout")) {
+                String user_name = params[1];
 
                 try {
-                    URL url =new URL(balance_url);
-                    HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                    URL url = new URL(balance_url);
+                    HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                     httpURLConnection.setRequestMethod("POST");
                     httpURLConnection.setDoOutput(true);
                     httpURLConnection.setDoInput(true);
                     OutputStream outputStream = httpURLConnection.getOutputStream();
-                    BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
-                    String data = URLEncoder.encode("user_name","UTF-8")+"="+URLEncoder.encode(user_name,"UTF-8");
+                    BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                    String data = URLEncoder.encode("user_name", "UTF-8") + "=" + URLEncoder.encode(user_name, "UTF-8");
                     bufferedWriter.write(data);
                     bufferedWriter.flush();
                     bufferedWriter.close();
@@ -232,9 +242,8 @@ public class HistoryOut extends AppCompatActivity implements ExampleDialog.Examp
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
                     StringBuilder stringBuilder = new StringBuilder();
 
-                    while((JSON_STRING = bufferedReader.readLine())!=null)
-                    {
-                        stringBuilder.append(JSON_STRING+"\n");
+                    while ((JSON_STRING = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(JSON_STRING + "\n");
                     }
 
                     bufferedReader.close();
@@ -260,10 +269,38 @@ public class HistoryOut extends AppCompatActivity implements ExampleDialog.Examp
         protected void onPostExecute(String result) {
             //float f=Float.parseFloat(result);
             //String fromfloat=""+f;
-            Toast.makeText(ctx,result, Toast.LENGTH_SHORT).show();
-            HistoryOut_response.setText(result);
-        }
-    } // Akhir dari AsyncTask*/
+            Toast.makeText(ctx, result, Toast.LENGTH_SHORT).show();
+            //HistoryOut_response.setText(result);
+            json_string = result;
+
+            try {
+                jsonObject = new JSONObject(json_string);
+                jsonArray = jsonObject.getJSONArray("server_response");
+
+                String transactonid, stealthreceiver, value, waktu;
+                ArrayList<Word2> words = new ArrayList<Word2>();
+                int count = jsonArray.length();
+                HistoryOut_response.setText(String.valueOf(count));
+
+                while (count>0) {
+                    JSONObject JO = jsonArray.getJSONObject(count-1);
+                    transactonid = JO.getString("transactionid");
+                    stealthreceiver=JO.getString("stealthreceiver");
+                    value = JO.getString("value");
+                    waktu = JO.getString("waktu");
+                    words.add(new Word2("ID= " + transactonid,"StealthReceiver= "+stealthreceiver, "Amount= " + value, "Time= " + waktu));
+                    count--;
+                }
+
+                WordAdapter2 adapter = new WordAdapter2(HistoryOut.this, words);
+                ListView listView = (ListView) findViewById(R.id.HistoryOut_list);
+                listView.setAdapter(adapter);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } // Akhir dari AsyncTask*/
+    }
 
 
 

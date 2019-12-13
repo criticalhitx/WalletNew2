@@ -17,9 +17,14 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -32,6 +37,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+
+import static android.view.View.GONE;
 
 public class HistoryIn extends AppCompatActivity implements ExampleDialog.ExampleDialogListener {
     Button btOpens ,btTshoot;
@@ -42,6 +50,9 @@ public class HistoryIn extends AppCompatActivity implements ExampleDialog.Exampl
     boolean canexit=false;
     Physicaloid mPhysicaloid; // initialising library
     String JSON_STRING;
+    String json_string;
+    JSONObject jsonObject;
+    JSONArray jsonArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +129,7 @@ public class HistoryIn extends AppCompatActivity implements ExampleDialog.Exampl
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            btOpens.setVisibility(View.GONE);
+                            btOpens.setVisibility(GONE);
                             btTshoot.setVisibility(View.VISIBLE);
                         }
                     }, 2000);
@@ -191,6 +202,7 @@ public class HistoryIn extends AppCompatActivity implements ExampleDialog.Exampl
         String user_name = HistoryIn_response.getText().toString(); // !!!!Query LAH DARI ARDUINO
         String method = "historyin";
         new HistoryIn.MyTask(this).execute(method,user_name); //Jalankan AsyncTaskPertama
+        btTshoot.setVisibility(GONE);
     }
 
     class MyTask extends AsyncTask<String,Void,String>
@@ -262,6 +274,39 @@ public class HistoryIn extends AppCompatActivity implements ExampleDialog.Exampl
             //String fromfloat=""+f;
             Toast.makeText(ctx,result, Toast.LENGTH_SHORT).show();
             HistoryIn_response.setText(result);
+            json_string=result;
+
+            try {
+                jsonObject = new JSONObject(json_string);
+                jsonArray = jsonObject.getJSONArray("server_response");
+
+                String transactonid,value,waktu;
+                ArrayList<Word> words = new ArrayList<Word>();
+                int count=jsonArray.length();
+                HistoryIn_response.setText(String.valueOf(count));
+
+                while(count>0)
+                {
+                    JSONObject JO = jsonArray.getJSONObject(count-1);
+                    transactonid=JO.getString("transactionid");
+                    value=JO.getString("value");
+                    waktu=JO.getString("waktu");
+                    words.add(new Word("ID= "+transactonid, "Amount= "+value,"Time= "+waktu));
+                    count--;
+                }
+
+                WordAdapter adapter = new WordAdapter(HistoryIn.this, words);
+                ListView listView = (ListView) findViewById(R.id.HistoryIn_list);
+                listView.setAdapter(adapter);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            if(json_string==null)
+            {
+                Toast.makeText(getApplicationContext(),"No Data", Toast.LENGTH_LONG).show();
+            }
         }
     }
 
