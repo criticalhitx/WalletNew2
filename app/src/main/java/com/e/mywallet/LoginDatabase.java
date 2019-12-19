@@ -24,9 +24,9 @@ import org.w3c.dom.Text;
 public class LoginDatabase extends AppCompatActivity {
     EditText ET_NAME, ET_PASS;
     String login_name, login_pass;
-    Button btnReg, btnRecover,btnLogin;
+    Button btnReg,btnLogin;
     ImageView cheatMagician;
-    TextView tvTestResponse;
+    TextView tvTestResponse,btnRecover;
     Button btOpen;
     Spinner spBauds;
     CheckBox cbAutoscrolls;
@@ -41,7 +41,7 @@ public class LoginDatabase extends AppCompatActivity {
         btnReg=(Button)findViewById(R.id.Login_Register);
         ET_NAME=(EditText)findViewById(R.id.Login_username);
         ET_PASS=(EditText)findViewById(R.id.Login_password);
-        btnRecover=(Button) findViewById(R.id.Login_Recover); // To go to recover menu
+        btnRecover=(TextView) findViewById(R.id.Login_Recover); // To go to recover menu
         btnLogin=(Button)findViewById(R.id.Login_btLogin);
         cheatMagician=(ImageView)findViewById(R.id.Login_imageCheatMagician);
         tvTestResponse=(TextView)findViewById(R.id.Login_testResponse);
