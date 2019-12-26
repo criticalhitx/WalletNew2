@@ -121,7 +121,8 @@
             android:id="@+id/registerResponse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"/>
+            android:background="#FFFFFF"
+            android:visibility="invisible"/>
 
         <TextView
             android:id="@+id/registerText1"

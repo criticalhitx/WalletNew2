@@ -15,10 +15,8 @@
         android:id="@+id/Login_testResponse"
         />
     <TextView
-        android:id="@+id/Login_Recover"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="______"
         android:textColor="#111d5e"/>
 
     <TextView
@@ -78,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/custom_button"
         android:text="Connect for Login" />
 
@@ -105,15 +103,14 @@
         android:background="@drawable/custom_button"/>
 
     <Button
-
+        android:id="@+id/Login_Recover"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/custom_button"
-        android:text="Recover with private Key"
-        android:visibility="gone"/>
+        android:text="Recover with private Key" />
 
     <ScrollView
         android:id="@+id/SCROLLER_ID"

@@ -31,17 +31,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/RecoverSK_testResponse"/>
-
-    <Button
-        android:id="@+id/RecoverSK_connect"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:text="Connect"
+        android:id="@+id/RecoverSK_testResponse"
         android:visibility="gone"/>
+
+
 
     <EditText
         android:id="@+id/RecoverSK_nilaisk"
@@ -81,21 +74,31 @@
         android:inputType="textPassword"/>
 
     <Button
+        android:id="@+id/RecoverSK_connect"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:text="Connect"/>
+
+    <Button
         android:id="@+id/RecoverSK_btCheckValidity"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
         android:text="Check Validity"
-        android:onClick="RecoverSK_btCheckValidity"/>
+        android:onClick="RecoverSK_btCheckValidity"
+        android:visibility="gone"/>
 
     <Button
-        android:id="@+id/RecoverSK_btPut"
+        android:id="@+id/RecoverSK_btGetPub"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
-        android:text="Put into Wallet!!"
+        android:text="Process"
         android:visibility="gone"/>
 
 

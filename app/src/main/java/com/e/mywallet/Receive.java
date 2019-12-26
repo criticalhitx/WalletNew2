@@ -192,8 +192,8 @@ public class Receive extends AppCompatActivity implements ExampleDialog.ExampleD
 
     public void onClickWrite(View v) {
         String integratedAddress = tvRead.getText().toString();
-        String user_name = integratedAddress.substring(33);
-        String stealth_address = integratedAddress.substring(0,32);
+        String user_name = integratedAddress.substring(65);
+        String stealth_address = integratedAddress.substring(0,64);
         tvUsername.setText(user_name);
         tvStealth.setText(stealth_address);
 

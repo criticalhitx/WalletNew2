@@ -211,6 +211,9 @@ public class Register extends AppCompatActivity {
             BackgroundTask backgroundTask =new BackgroundTask(this);
             backgroundTask.execute(method,firstname,user_name,user_pass,email,lastname,createdPKey);
             btnReg.setEnabled(false);
+            tv1.setText("Write Down Private Key in a Paper for Highest Security");
+            tv1.setVisibility(View.VISIBLE);
+            tv1.setBackgroundColor(getColor(R.color.white));
         }
     }
 

@@ -35,13 +35,15 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import static android.view.View.GONE;
+
 public class RecoverSK extends AppCompatActivity {
     ImageView imagebackpin;
     EditText etUsername,etPassword, etInsertedSK; // Input parameter from user
     TextView tvTest; // response
-    Button btVerify,btPutWallet, btOpen; // btVerify untuk cek ke server, PutWallet untuk taruh wallet, open untuk conect
+    Button btVerify,btGetPub, btOpen; // btVerify untuk cek ke server, PutWallet untuk taruh wallet, open untuk conect
 //-------------------------------
-    String new_user_name,new_password,insertedSK;
+    String new_user_name,new_password,GeneratedPK;
     ///---------------------------
     boolean canexit = false;
     Spinner spBauds;
@@ -63,7 +65,7 @@ public class RecoverSK extends AppCompatActivity {
         btOpen =(Button)findViewById(R.id.RecoverSK_connect); //Tombol Connect
         spBauds = (Spinner) findViewById(R.id.RecoverSK_spinners);
         cbAutoscrolls = (CheckBox)findViewById(R.id.RecoverSK_autoscrolls);
-        btPutWallet = (Button)findViewById(R.id.RecoverSK_btPut); // Send button
+        btGetPub = (Button)findViewById(R.id.RecoverSK_btGetPub); // Send button
         btVerify = (Button)findViewById(R.id.RecoverSK_btCheckValidity); // Check Validity button
         btOpen = (Button)findViewById(R.id.RecoverSK_connect);
         //-------------------------------------
@@ -122,11 +124,25 @@ public class RecoverSK extends AppCompatActivity {
                 if(mPhysicaloid.open()) {
 
                     setEnabledUi(true);
-                    String kirim = "8"; //Mengirim case 9 ke while loop [ Mode Send ]
+                    String kirim = "8"; //Mengirim case 8 ke while loop [ Mode Restore SK ]
+
                     if(kirim.length()>0) {
                         byte[] buf = kirim.getBytes();
                         mPhysicaloid.write(buf, buf.length);
                     }
+
+                    etUsername.setEnabled(false);
+                    etPassword.setEnabled(false);
+                    etInsertedSK.setEnabled(false);
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            btOpen.setVisibility(GONE);
+                            btGetPub.setVisibility(View.VISIBLE);
+                        }
+                    }, 1000);
 
                     if(cbAutoscrolls.isChecked())
                     {
@@ -148,27 +164,25 @@ public class RecoverSK extends AppCompatActivity {
             }
         });
 
-        btPutWallet.setOnClickListener(new View.OnClickListener()
+        btGetPub.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                if(new_user_name.length()>0) {
-                    byte[] buf = new_user_name.getBytes();
-                    mPhysicaloid.write(buf, buf.length);
-                }
+                String kirim =etInsertedSK.getText().toString(); // Send Secret key to wallet
+                if(kirim.length()>0) {
+                    byte[] buf = kirim.getBytes();
+                    mPhysicaloid.write(buf, buf.length);}
 
+                //Time is need for wallet calculation
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if(insertedSK.length()>0) {
-                            byte[] buf = insertedSK.getBytes();
-                            mPhysicaloid.write(buf, buf.length);
-                        }
+                        btGetPub.setVisibility(GONE);
+                        btVerify.setVisibility(View.VISIBLE);
                     }
-                }, 2000);
-                btPutWallet.setEnabled(false);
+                }, 3000);
             }
         });
 
@@ -207,7 +221,6 @@ public class RecoverSK extends AppCompatActivity {
     private void setEnabledUi(boolean on) {
         if(on) {
             btOpen.setEnabled(false); // Connect
-            btPutWallet.setEnabled(true); // Put to Wallet PButton
            // etInsertedSK.setEnabled(true);
            // etUsername.setEnabled(true);
            // etPassword.setEnabled(true);
@@ -217,7 +230,6 @@ public class RecoverSK extends AppCompatActivity {
 
         } else {
             btOpen.setEnabled(true);
-            btPutWallet.setEnabled(false);
           //  etInsertedSK.setEnabled(false);
            // etUsername.setEnabled(false);
            // etPassword.setEnabled(false);
@@ -242,18 +254,18 @@ public class RecoverSK extends AppCompatActivity {
         });
     }
 
-    ///--- This procedure is done first of all, check validity to server
+    ///--- This procedure is done later
     public void RecoverSK_btCheckValidity(View view) {
         new_user_name = etUsername.getText().toString();
         new_password = etPassword.getText().toString();
-        insertedSK =  etInsertedSK.getText().toString();
+        GeneratedPK =  tvTest.getText().toString();
 
         String method = "recoversk";
-        new RecoverSK.MyTask(this).execute(method,new_user_name,new_password,insertedSK);
+        new RecoverSK.MyTask(this).execute(method,new_user_name,new_password,GeneratedPK);
 
     }
 
-    private class MyTask extends AsyncTask<String,Void,String>
+    class MyTask extends AsyncTask<String,Void,String>
     {
         AlertDialog alertDialog;
         Context ctx;
@@ -276,7 +288,7 @@ public class RecoverSK extends AppCompatActivity {
             {
                 String user_name=params[1];
                 String user_pass=params[2];
-                String secret_key =params[3];
+                String public_key =params[3];
 
                 try {
                     URL url =new URL(send_url);
@@ -287,7 +299,7 @@ public class RecoverSK extends AppCompatActivity {
                     BufferedWriter bufferedWriter= new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
                     String data = URLEncoder.encode("user_name","UTF-8") +"="+URLEncoder.encode(user_name,"UTF-8")+"&"+
                             URLEncoder.encode("user_pass","UTF-8") +"="+URLEncoder.encode(user_pass,"UTF-8")+"&"+
-                            URLEncoder.encode("secret_key","UTF-8") +"="+URLEncoder.encode(secret_key,"UTF-8");
+                            URLEncoder.encode("public_key","UTF-8") +"="+URLEncoder.encode(public_key,"UTF-8");
                     bufferedWriter.write(data);
                     bufferedWriter.flush();
                     bufferedWriter.close();
@@ -327,23 +339,26 @@ public class RecoverSK extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            if (result.equals("Update username dan password berhasil di server!"))
+               // Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
+            if (result.equals("Beda"))
             {
-                Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
-                etInsertedSK.setVisibility(View.GONE);
-                etPassword.setVisibility(View.GONE);
-                etUsername.setVisibility(View.GONE);
-                btVerify.setVisibility(View.GONE);
-                btOpen.setVisibility(View.VISIBLE);
-                btPutWallet.setVisibility(View.VISIBLE);
-                setEnabledUi(false);
-            }
-            else
-            {
+                if(result.length()>0) {
+                    byte[] buf = result.getBytes();
+                    mPhysicaloid.write(buf, buf.length);}
                 alertDialog.setMessage(result);
                 alertDialog.show();
             }
-        }
-    } // end of Async task
+            else if(result.equals("Sama"))
+            {
+                String kirim = etUsername.getText().toString(); // Bila Sama kirim user
+                if(kirim.length()>0) {
+                    byte[] buf = kirim.getBytes();
+                    mPhysicaloid.write(buf, buf.length);}
 
-}
+                alertDialog.setMessage(result);
+                alertDialog.show();
+            }
+
+        }
+    }
+} // end of Async task
