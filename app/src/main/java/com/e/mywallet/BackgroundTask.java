@@ -122,7 +122,7 @@ public class BackgroundTask extends AsyncTask<String,Void,String>{
         else if(method.equals("receive"))
         {
             String user_name = params[1];
-            String stealth_key = params[2];
+            String r = params[2];
             try {
                 URL url = new URL(receive_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
@@ -132,7 +132,7 @@ public class BackgroundTask extends AsyncTask<String,Void,String>{
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
                 String data = URLEncoder.encode("user_name","UTF-8")+"="+URLEncoder.encode(user_name,"UTF-8")+"&"+
-                        URLEncoder.encode("stealth_key","UTF-8")+"="+URLEncoder.encode(stealth_key,"UTF-8");
+                        URLEncoder.encode("r","UTF-8")+"="+URLEncoder.encode(r,"UTF-8");
                 bufferedWriter.write(data);
                 bufferedWriter.flush();
                 bufferedWriter.close();

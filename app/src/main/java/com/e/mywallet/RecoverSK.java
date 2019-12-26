@@ -174,12 +174,16 @@ public class RecoverSK extends AppCompatActivity {
                     byte[] buf = kirim.getBytes();
                     mPhysicaloid.write(buf, buf.length);}
 
+                btGetPub.setVisibility(GONE);
+                etInsertedSK.setVisibility(GONE);
+                etUsername.setVisibility(GONE);
+                etPassword.setVisibility(GONE);
                 //Time is need for wallet calculation
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        btGetPub.setVisibility(GONE);
+
                         btVerify.setVisibility(View.VISIBLE);
                     }
                 }, 3000);
@@ -262,6 +266,7 @@ public class RecoverSK extends AppCompatActivity {
 
         String method = "recoversk";
         new RecoverSK.MyTask(this).execute(method,new_user_name,new_password,GeneratedPK);
+        btVerify.setEnabled(false);
 
     }
 

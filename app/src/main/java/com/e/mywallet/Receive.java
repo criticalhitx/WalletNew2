@@ -193,13 +193,11 @@ public class Receive extends AppCompatActivity implements ExampleDialog.ExampleD
     public void onClickWrite(View v) {
         String integratedAddress = tvRead.getText().toString();
         String user_name = integratedAddress.substring(65);
-        String stealth_address = integratedAddress.substring(0,64);
-        tvUsername.setText(user_name);
-        tvStealth.setText(stealth_address);
+        String r = integratedAddress.substring(0,64);
 
         String method = "receive";
         BackgroundTask backgroundTask = new BackgroundTask(this);
-        backgroundTask.execute(method,user_name,stealth_address);
+        backgroundTask.execute(method,user_name,r);
         btWrite.setEnabled(false);
 
         tvExitNotif.setVisibility(View.VISIBLE);
