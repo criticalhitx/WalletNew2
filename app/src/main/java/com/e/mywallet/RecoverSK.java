@@ -345,17 +345,20 @@ public class RecoverSK extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
                // Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
-            if (result.equals("Beda"))
+
+            if(result.equals("Sama"))
             {
-                if(result.length()>0) {
-                    byte[] buf = result.getBytes();
+                String kirim = etUsername.getText().toString(); // Bila Sama kirim user
+                if(kirim.length()>0) {
+                    byte[] buf = kirim.getBytes();
                     mPhysicaloid.write(buf, buf.length);}
+
                 alertDialog.setMessage(result);
                 alertDialog.show();
             }
-            else if(result.equals("Sama"))
+            else
             {
-                String kirim = etUsername.getText().toString(); // Bila Sama kirim user
+                String kirim = "Beda";
                 if(kirim.length()>0) {
                     byte[] buf = kirim.getBytes();
                     mPhysicaloid.write(buf, buf.length);}
