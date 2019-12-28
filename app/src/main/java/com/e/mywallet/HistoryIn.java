@@ -220,7 +220,7 @@ public class HistoryIn extends AppCompatActivity implements ExampleDialog.Exampl
 
         @Override
         protected String doInBackground(String... params) {
-            String balance_url ="http://3.135.54.193/TA/historyin.php";
+            String balance_url ="http://18.189.104.59/TA/historyin.php";
             String method = params[0];
             if(method.equals("historyin"))
             {

@@ -219,7 +219,7 @@ public class HistoryOut extends AppCompatActivity implements ExampleDialog.Examp
 
         @Override
         protected String doInBackground(String... params) {
-            String balance_url = "http://3.135.54.193/TA/historyout.php";
+            String balance_url = "http://18.189.104.59/TA/historyout.php";
             String method = params[0];
             if (method.equals("historyout")) {
                 String user_name = params[1];

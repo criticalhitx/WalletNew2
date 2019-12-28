@@ -223,7 +223,7 @@ public class Send extends AppCompatActivity implements ExampleDialog.ExampleDial
 
         @Override
         protected String doInBackground(String... params) {
-            String send_url ="http://3.135.54.193/TA/send.php";
+            String send_url ="http://18.189.104.59/TA/send.php";
             String method = params[0];
             if(method.equals("send"))
             {
